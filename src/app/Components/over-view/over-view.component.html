@@ -1,1 +1,189 @@
-<p>over-view works!</p>
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="top-header d-flex fluid justify-content-end align-items-end">
+      <div class="d-flex align-items-end gap-1">
+        <i class="bi bi-bell"></i>
+        <span class="user-name">Nada salah</span>
+        <div class="user-avatar"></div>
+      </div>
+    </header>
+
+    <!-- Dashboard Overview -->
+    <div class="content-wrapper">
+      <h1 class="page-title">Dashboard overview</h1>
+
+      <!-- Stats Cards Row -->
+      <div class="row g-3 mb-4">
+        <!-- Sharks Target Card -->
+        <div class="col-md-6">
+          <div class="stats-card">
+            <div class="card-icon shark-icon">
+              <i class="bi bi-water"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Sharks Target</h3>
+              <div class="card-value">{{ sharksTarget }}</div>
+              <div class="card-meta text-success">
+                <i class="bi bi-arrow-up"></i>
+                +{{ activeTags }} today Active tags
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Card -->
+        <div class="col-md-6">
+          <div class="stats-card">
+            <div class="card-icon alert-icon">
+              <i class="bi bi-bell-fill"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Alert</h3>
+              <div class="card-meta-row">
+                <span class="badge-warning">⚠ Warning: {{ warningCount }}</span>
+                <span class="badge-danger">⚠ Danger: {{ dangerCount }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Average Depth Card -->
+        <div class="col-md-6">
+          <div class="stats-card">
+            <div class="card-icon depth-icon">
+              <i class="bi bi-arrow-down-circle"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Average Depth</h3>
+              <div class="card-value">{{ averageDepth }}m</div>
+              <div class="card-meta-row-bottom">
+                <span class="text-success"
+                  >● {{ depthChange }}m from yesterday</span
+                >
+                <span class="text-info">● Current dive depth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pacific Coast Card -->
+        <div class="col-md-6">
+          <div class="stats-card">
+            <div class="card-icon coast-icon">
+              <i class="bi bi-globe2"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Pacific Coast</h3>
+              <div class="card-value">{{ pacificCoastSharks }} sharks</div>
+              <div class="card-meta">
+                <i class="bi bi-geo-alt"></i>
+                Most active area
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags Chart -->
+      <div class="row g-3 mb-4">
+        <div class="col-12">
+          <div class="chart-card">
+            <h3 class="chart-title">Tags</h3>
+            <div class="donut-chart-container">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="70"
+                  fill="none"
+                  stroke="#2ECC71"
+                  stroke-width="40"
+                  stroke-dasharray="219.9 439.8"
+                  transform="rotate(-90 100 100)"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="70"
+                  fill="none"
+                  stroke="#F39C12"
+                  stroke-width="40"
+                  stroke-dasharray="164.9 439.8"
+                  stroke-dashoffset="-219.9"
+                  transform="rotate(-90 100 100)"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="70"
+                  fill="none"
+                  stroke="#E74C3C"
+                  stroke-width="40"
+                  stroke-dasharray="55 439.8"
+                  stroke-dashoffset="-384.8"
+                  transform="rotate(-90 100 100)"
+                />
+                <text
+                  x="100"
+                  y="105"
+                  text-anchor="middle"
+                  class="chart-center-text"
+                >
+                  {{ tagsData.total }}
+                </text>
+              </svg>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-color" style="background: #2ecc71"></span>
+                  <span class="legend-label">{{ tagsData.active }} Active</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color" style="background: #f39c12"></span>
+                  <span class="legend-label"
+                    >{{ tagsData.lastActive }} Last active</span
+                  >
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color" style="background: #e74c3c"></span>
+                  <span class="legend-label"
+                    >{{ tagsData.inactive }} Inactive</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Map -->
+      <app-live-map></app-live-map>
+
+      <!-- Latest Tag Updates -->
+      
+        <h2 class="section-title mb-3">Latest Tag Updates</h2>
+        <div class="table-responsive">
+          <table class="table data-table">
+            <thead>
+              <tr>
+                <th>#ID</th>
+                <th>Shark name</th>
+                <th>Location</th>
+                <th>Feeding Activity</th>
+                <th>Depth</th>
+                <th>Battery</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

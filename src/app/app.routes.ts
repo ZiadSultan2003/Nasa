@@ -8,7 +8,7 @@ export const routes: Routes = [
   //   loadComponent: () =>
   //     import('').then((c) => c.AuthComponent),
   //   children: [
-     { path: '', redirectTo: 'overview', pathMatch: 'full' },
+  { path: '', redirectTo: 'overview', pathMatch: 'full' },
   {
     path: 'overview',
     loadComponent: () =>
